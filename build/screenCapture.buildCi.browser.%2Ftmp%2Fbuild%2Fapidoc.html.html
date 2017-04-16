@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/image-size/image-size#readme"
-
-    >image-size (v0.5.1)</a>
+    <a href="https://github.com/image-size/image-size#readme">image-size (v0.5.1)</a>
 </h1>
 <h4>get dimensions of any image file</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.image-size">module image-size</a><ol>
 
@@ -108,14 +101,14 @@
   }
 
   // input should be a string at this point
-  if (typeof input !== &#x27;string&#x27;) {
-    throw new TypeError(&#x27;invalid invocation&#x27;);
+  if (typeof input !== 'string') {
+    throw new TypeError('invalid invocation');
   }
 
   // resolve the file path
   var filepath = path.resolve(input);
 
-  if (typeof callback === &#x27;function&#x27;) {
+  if (typeof callback === 'function') {
     asyncFileToBuffer(filepath, function (err, buffer) {
       if (err) { return callback(err); }
 
@@ -162,3 +155,4 @@
     ]
 </div>
 </div>
+</body></html>

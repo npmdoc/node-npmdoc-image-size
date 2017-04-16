@@ -63,6 +63,24 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.image-size.image-size">
+            function <span class="apidocSignatureSpan"></span>image-size
+            <span class="apidocSignatureSpan">(input, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.image-size.toString">
+            function <span class="apidocSignatureSpan">image-size.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">image-size.</span>types</span>
 
         </li>
@@ -73,6 +91,66 @@
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.image-size" id="apidoc.module.image-size">module image-size</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.image-size.image-size" id="apidoc.element.image-size.image-size">
+        function <span class="apidocSignatureSpan"></span>image-size
+        <span class="apidocSignatureSpan">(input, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">image-size = function (input, callback) {
+
+  // Handle buffer input
+  if (Buffer.isBuffer(input)) {
+    return lookup(input);
+  }
+
+  // input should be a string at this point
+  if (typeof input !== &#x27;string&#x27;) {
+    throw new TypeError(&#x27;invalid invocation&#x27;);
+  }
+
+  // resolve the file path
+  var filepath = path.resolve(input);
+
+  if (typeof callback === &#x27;function&#x27;) {
+    asyncFileToBuffer(filepath, function (err, buffer) {
+      if (err) { return callback(err); }
+
+      // return the dimensions
+      var dimensions;
+      try {
+        dimensions = lookup(buffer, filepath);
+      } catch (e) {
+        err = e;
+      }
+      callback(err, dimensions);
+    });
+  } else {
+    var buffer = syncFileToBuffer(filepath);
+    return lookup(buffer, filepath);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.image-size.toString" id="apidoc.element.image-size.toString">
+        function <span class="apidocSignatureSpan">image-size.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return toString;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
 
