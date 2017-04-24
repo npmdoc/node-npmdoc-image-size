@@ -1,7 +1,12 @@
-# api documentation for  [image-size (v0.5.1)](https://github.com/image-size/image-size#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-image-size.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-image-size) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-image-size.svg)](https://travis-ci.org/npmdoc/node-npmdoc-image-size)
+# npmdoc-image-size
+
+#### api documentation for  [image-size (v0.5.1)](https://github.com/image-size/image-size#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-image-size.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-image-size) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-image-size.svg)](https://travis-ci.org/npmdoc/node-npmdoc-image-size)
+
 #### get dimensions of any image file
 
 [![NPM](https://nodei.co/npm/image-size.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/image-size)
+
+- [https://npmdoc.github.io/node-npmdoc-image-size/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-image-size/build/apidoc.html)
 
 [![apidoc](https://npmdoc.github.io/node-npmdoc-image-size/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-image-size/build/apidoc.html)
 
@@ -93,73 +98,6 @@
     },
     "version": "0.5.1"
 }
-```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module image-size](#apidoc.module.image-size)
-1.  [function <span class="apidocSignatureSpan"></span>image-size (input, callback)](#apidoc.element.image-size.image-size)
-1.  [function <span class="apidocSignatureSpan">image-size.</span>toString ()](#apidoc.element.image-size.toString)
-1.  object <span class="apidocSignatureSpan">image-size.</span>types
-
-
-
-# <a name="apidoc.module.image-size"></a>[module image-size](#apidoc.module.image-size)
-
-#### <a name="apidoc.element.image-size.image-size"></a>[function <span class="apidocSignatureSpan"></span>image-size (input, callback)](#apidoc.element.image-size.image-size)
-- description and source-code
-```javascript
-image-size = function (input, callback) {
-
-  // Handle buffer input
-  if (Buffer.isBuffer(input)) {
-    return lookup(input);
-  }
-
-  // input should be a string at this point
-  if (typeof input !== 'string') {
-    throw new TypeError('invalid invocation');
-  }
-
-  // resolve the file path
-  var filepath = path.resolve(input);
-
-  if (typeof callback === 'function') {
-    asyncFileToBuffer(filepath, function (err, buffer) {
-      if (err) { return callback(err); }
-
-      // return the dimensions
-      var dimensions;
-      try {
-        dimensions = lookup(buffer, filepath);
-      } catch (e) {
-        err = e;
-      }
-      callback(err, dimensions);
-    });
-  } else {
-    var buffer = syncFileToBuffer(filepath);
-    return lookup(buffer, filepath);
-  }
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.image-size.toString"></a>[function <span class="apidocSignatureSpan">image-size.</span>toString ()](#apidoc.element.image-size.toString)
-- description and source-code
-```javascript
-toString = function () {
-    return toString;
-}
-```
-- example usage
-```shell
-n/a
 ```
 
 
